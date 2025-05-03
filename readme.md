@@ -1,5 +1,5 @@
 [![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?logo=openjdk&logoColor=white)](#)
-### Tamagochi with extra AI features
+### Tamagotchi with extra AI features
 
 - Java SDK 21.0.6
 
