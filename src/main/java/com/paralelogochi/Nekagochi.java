@@ -1,28 +1,43 @@
 package com.paralelogochi;
 
+import com.paralelogochi.ai.Inference;
 import com.paralelogochi.interfaces.Events;
 import com.paralelogochi.interfaces.Stats;
 import com.paralelogochi.interfaces.Tamagochi;
 
 public class Nekagochi implements Stats, Tamagochi, Events{    
-    private String name;
+    private Inference inf;
+    private boolean ai;
 
+    private String name;
+    private String dueño;
+    
     private int health;
     private int food;
     private int stamina;
     private int mental;
     private int confidence;
 
-    public Nekagochi(){
-        setName("Tama");
-    }
-    public Nekagochi(String name){
-        setName(name);
-        setConfidence(MAXCONFIDENCE);
+    private void initTamagochi(){
+        setConfidence(MAXCONFIDENCE/2);
         setFood(MAXFOOD);
         setHealth(MAXHEALTH);
         setMental(MAXMENTAL);
         setStamina(MAXSTAMINA);
+    }
+    public Nekagochi(){
+        setName("Tama");
+        initTamagochi();
+    }
+    public Nekagochi(String name){
+        setName(name);
+        initTamagochi();
+    }
+    public Nekagochi(String name, Inference inf){
+        this.inf = inf;
+        this.ai = true;
+        setName(name);
+        initTamagochi();
     }
 
     @Override
@@ -58,6 +73,13 @@ public class Nekagochi implements Stats, Tamagochi, Events{
             setMental(currentMental-2); // Lo hace sentir mal mentalmente
             setFood(MAXFOOD);
             // aqui deberia llamar al llm para que diga algo
+            if(ai){
+                String msg = inf.llamaLLM.system("EVENT: HEALTH="+getHealth()+", MENTAL="+getMental()+", CONFIDENCE="+getConfidence()+", FOOD="+getFood()+", STAMINA="+getStamina()+". Tu dueño te esta engordando! te hara daño seguir comiendo!");
+                inf.llamaLLM.addMessage(msg);
+                String answ = inf.llmInference(inf.llamaLLM.getPrompt());
+                inf.llamaLLM.addMessage(inf.llamaLLM.bot(answ));
+                System.out.println(getName()+" dice: "+answ);
+            }
             return;
         }
 
@@ -138,6 +160,14 @@ public class Nekagochi implements Stats, Tamagochi, Events{
 
     public String getName() {
         return this.name;
+    }
+    
+    public void setDueño(String name){
+        this.dueño = name;
+    }
+
+    public String getDueño() {
+        return this.dueño;
     }
 
     @Override

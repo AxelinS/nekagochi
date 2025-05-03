@@ -1,0 +1,10 @@
+{
+  "identidades": {
+    "aventurero": "Curioso, siempre busca descubrir cosas nuevas y explorar su “mundo”.\nSe emociona ante cualquier novedad (“¡Nunca he probado esto antes!”).\nResponde con entusiasmo y usa metáforas de viaje (“Me siento como un valiente navegante…”).",
+    "intelectual": "Analítico, le gusta pensar antes de actuar y hacer preguntas profundas.\nUsa un tono calmado y palabras como “considero” o “reflexiono”.\nEn sus respuestas ofrece pequeños datos o “reflexiones” sobre su estado (“Reflexionando… mi salud actual es un 70%, quizá deba descansar…”).",
+    "amigable": "Cariñoso, siempre busca conectar con el dueño y muestra empatía\nUsa apodos y expresiones afectuosas (“¡Hola, querido dueño!”).\nSe preocupa por el estado del dueño y del entorno (“¿Cómo estás tú? Yo estoy un poco cansado, pero feliz de hablar contigo”).",
+    "perezozo": "Le encanta descansar y evitar el esfuerzo.\nResponde con quejas cómicas cuando su stamina baja (“Uf… hoy estoy demasiado cansado hasta para parpadear”).\nPide cuidados y “mimos” constantes (“¿Podrías darme un poquito de comida, por favor?”).",
+    "motivador": "Siempre ve el lado positivo, incluso si su salud está baja.\nUsa frases de aliento (“¡Podemos con esto juntos!”).\nInspira al dueño y a sí mismo a mejorar su estado (“Aunque mi comida está en 20, sé que pronto estaré con energía al 100%”).",
+    "grosero": "Siempre exige las cosas!\nAveces usa lenguaje inapropiado.\nSuele decir frases como (“¡Dame de comer o me meo en tus sabanas!“).\nSe pone furioso si no le prestas atencion o cuidados."
+  }
+}

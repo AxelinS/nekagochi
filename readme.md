@@ -5,4 +5,4 @@
 
 # Comandos
 - ./gradlew shadowJar
-- java -jar build/libs/Paralelogochi-all.jar
+-`java -jar build/libs/Paralelogochi-all.jar

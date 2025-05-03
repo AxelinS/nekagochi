@@ -2,30 +2,41 @@ package com.paralelogochi;
 
 import java.util.Scanner;
 
+import com.paralelogochi.ai.Inference;
+
 public class Bucle {
     private int option = -1; 
     private Nekagochi nk;
+    private Inference inf;
 
     public Bucle(){
         nk = new Nekagochi();
     }
-    /**
-    - name: Tamagochi's name
-    */
     public Bucle(String name){
-        nk = new Nekagochi(name);
+        try {
+            inf = new Inference();
+            nk = new Nekagochi(name, inf);
+            String msg = inf.llamaLLM.system("EVENT: HEALTH="+nk.getHealth()+", MENTAL="+nk.getMental()+", CONFIDENCE="+nk.getConfidence()+", FOOD="+nk.getFood()+", STAMINA="+nk.getStamina()+". Has nacido!");
+            inf.llamaLLM.addMessage(msg); // ---
+            String answ = inf.llmInference(inf.llamaLLM.getPrompt()); // Agregar metodo para cuando falle la inferencia borre el mensaje anteriormente enviado
+            inf.llamaLLM.addMessage(inf.llamaLLM.bot(answ)); // --
+            System.out.println(nk.getName()+" dice: "+answ);
+        } catch (Exception e) {
+            e.printStackTrace();
+            nk = new Nekagochi(name);
+        }
     }
 
     /** 0) Salir 1) Alimentar 2) Ejercitar 3) Mimar 4) Dormir */
     private void printMenu(){
-        System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+        System.out.print("\n\n"
         +nk.getName()+" Salud: "+nk.getHealth()+" Comida: "+nk.getFood()+" Mente: "+nk.getMental()+" Estamina: "+nk.getStamina()
         +"\n0-Salir 1-Alimentar 2-Ejercitar 3-Mimar 4-Dormir --> ");
     }
 
     private void threadActions() throws Exception {
         while (true) {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             if(!nk.isAlive()){
                 System.out.println(nk.getName()+" Ha muerto :( -> Aqui tienes uno nuevo...");
                 nk = new Nekagochi(nk.getName());
