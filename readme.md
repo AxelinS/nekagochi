@@ -4,5 +4,10 @@
 - Java SDK 21.0.6
 
 # Comandos
-- ./gradlew shadowJar
--`java -jar build/libs/Paralelogochi-all.jar
+```
+./gradlew shadowJar
+```
+
+```
+java -jar build/libs/Paralelogochi-all.jar
+```
